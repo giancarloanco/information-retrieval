@@ -1,0 +1,13 @@
+<p class="h3">Indexación</p>
+
+<form (submit) = "upload_new_text(title, body)">
+    <div class="form-group">
+        <label for="title_new_text">Título</label>
+        <input type="text" class="form-control" id="title_new_text" required #title>
+    </div>
+    <div class="form-group">
+        <label for="body_new_text">Texto</label>
+        <textarea class="form-control" id="body_new_text" rows="3" required #body></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Indexar</button>
+</form>
