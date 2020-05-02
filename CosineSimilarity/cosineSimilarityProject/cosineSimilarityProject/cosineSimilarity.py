@@ -65,9 +65,3 @@ for i in range (len(index_nearest_vectors)):
     print(index_nearest_vectors[i], list_vectors[index_nearest_vectors[i]])
 
 print('Ordered Vectors:\n', ordered_vectors)
-
-for i in range (len(ordered_vectors) - 1):
-    print(list_vectors[ordered_vectors[i]])
-
-for i in range (len(scores_vectors) - 1):
-    print(scores_vectors[ordered_vectors[i]])

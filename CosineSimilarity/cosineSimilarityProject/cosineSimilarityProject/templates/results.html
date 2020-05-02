@@ -1,0 +1,117 @@
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-oOs/gFavzADqv3i5nCM+9CzXe3e5vXLXZ5LZ7PplpsWpTCufB7kqkTlC9FtZ5nJo" crossorigin="anonymous">
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Cosine Similarity</title>
+    
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand">COSINE SIMILARITY</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/cosine_similarity/">Similitud<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container py-4">
+            <h4>
+                Similitud de Vectores
+            </h4>
+            
+            <h5>
+                <small class="text-muted">Resultado</small>
+            </h5>
+            <div class="py-2">
+                
+                <div class="text-center">
+                    Vector Central: <h5> {{central_vector}} </h5>
+                </div>
+                
+                <div class="row d-flex justify-content-center">
+                    
+                    <ul class="list-group py-3 w-50" >
+                        {% for result in ordered_vectors %}
+                        <li class="list-group-item">
+                            <small class="text-muted">-> </small>
+                            {{result}}
+                        </li>                                        
+                            
+
+                        {% endfor %}
+                        <!---                         
+                        <li class="list-group-item active">Vector 2</li>
+                        <li class="list-group-item">Vector 3</li>
+                        <li class="list-group-item">Vector 4</li>
+                        <li class="list-group-item">Vector 5</li>
+                        --->
+                    </ul>
+                    <ul class="list-group py-3 w-25" >
+                        {% for score in scores_vectors %}
+                        <li class="list-group-item">
+                            <small class="text-muted">Score: </small>
+                            {{score}}
+                        </li>                                        
+                            
+
+                        {% endfor %}
+                        <!---                         
+                        <li class="list-group-item active">Vector 2</li>
+                        <li class="list-group-item">Vector 3</li>
+                        <li class="list-group-item">Vector 4</li>
+                        <li class="list-group-item">Vector 5</li>
+                        --->
+                    </ul>
+                </div>
+                
+            </div>
+            
+        
+        </div>
+
+       
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+<script>
+$(document).ready(function() {
+    $('#btn_num_vectors').click(function() {
+        if ((document.getElementById("num_vectors").value > 1) && (document.getElementById("num_vectors").value < 11))
+        {
+            $('#num_vectors').popover('hide')
+            $('#num_vectors').popover('disable')
+            
+            for (var i=0; i < document.getElementById("num_vectors").value; i++){
+                $('#input_vectors').append('<div class="input-group-prepend"><div class="input-group-text">'+(i+1).toString()+'</div><input type="text" class="form-control" name="input_vector_'+ i +'" id="vector'+i+'" placeholder="1,2,3,4,5"></div>');
+            }
+            return false;
+        }
+        else {
+            $('#num_vectors').popover('enable')
+            $('#num_vectors').popover('show')
+            return false;
+        }
+
+        
+    });
+});
+</script>
